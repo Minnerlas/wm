@@ -47,13 +47,14 @@ cd slstatus
 sudo make clean install
 cd ..
 
-# wm/skripte/instpakete.sh
-ln ./razno/dwm.desktop /usr/share/xessions/dwm.desktop
+# fhgf wm/skripte/instpakete.sh
+sudo mkdir /use/share/xsessions
+sudo ln ./razno/dwm.desktop /usr/share/xsessions/dwm.desktop
 
 # podesiti /etc/lightdm/lightdm.conf ([Seat] user-session = dwm)
 sudo cp ./razno/lightdm.conf /etc/lightdm/lightdm.conf
 
-# sudo systemctl enable lightdm.service
+sudo systemctl enable lightdm.service
 # kopirati pozadine
 
 EOSU

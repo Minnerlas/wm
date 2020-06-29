@@ -9,6 +9,7 @@ xorg
 xorg-xinit
 lightdm
 lightdm-gtk-greeter
+pulseaudio
 firefox
 pcmanfm
 feh
