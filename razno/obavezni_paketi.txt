@@ -1,5 +1,6 @@
 git
 dmenu
+libx11
 arandr
 dunst
 pulsemixer
