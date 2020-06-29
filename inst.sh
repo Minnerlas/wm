@@ -9,7 +9,7 @@ useradd $IME -s $SHELL -m
 cp $SUDOERS $SUDOERS.bak
 echo $IME "ALL=(ALL) NOPASSWD:ALL" >> $SUDOERS
 
-su $IME
+su $IME << EOSU
 
 sudo pacman -S base-devel
 
@@ -31,7 +31,8 @@ makepkg -si
 # sudo systemctl enable lightdm.service
 # kopirati pozadine
 
-exit
+
+EOSU
 
 # mv $SUDOERS.bak $SUDOERS
 # echo $IME "ALL = NOPASSWD: /bin/systemctl restart httpd.service, /bin/kill" >> $SUDOERS
