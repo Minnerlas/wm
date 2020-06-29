@@ -3,8 +3,10 @@
 PAKMAN=""
 AUR=""
 
-if [ $# -gt 0 ] then 
+if [ $# -gt 0 ] 
+then 
 	if [ $1 == "aur" ]
+	then
 		AUR=$2
 	else
 		PAKMAN=$2
@@ -17,5 +19,10 @@ fi
 # sudo pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort $FAJL))
 # ls $PAKMAN
 # cat  $PAKMAN
-sudo pacman -S --needed $(cat $PAKMAN)
-yay -S $(cat $AUR)
+if [ -n "$PAKMAN" ]
+then
+	sudo pacman -S --needed $(cat $PAKMAN)
+elif [ -n "$AUR" ]
+then
+	yay -S $(cat $AUR)
+fi
