@@ -11,7 +11,7 @@ echo $IME "ALL=(ALL) NOPASSWD:ALL" >> $SUDOERS
 
 su $IME << EOSU
 
-sudo pacman -S base-devel
+sudo pacman --noconfirm -S base-devel git
 
 git clone https://github.com/minnerlas/tackice
 
@@ -21,7 +21,7 @@ cp -r tackice/* .
 rm -rvf .git 
 git clone https://aur.archlinux.org/yay.git
 cd yay
-makepkg -si
+sudo makepkg -si
 # git clone https://github.com/minnerlas/wm
 # cd
 # instalirati bitne pakete
