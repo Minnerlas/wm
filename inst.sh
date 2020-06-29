@@ -39,5 +39,5 @@ ln ./wm/razno/dwm.desktop /usr/share/xessions/dwm.desktop
 
 EOSU
 
-# mv $SUDOERS.bak $SUDOERS
-# echo $IME "ALL = NOPASSWD: /bin/systemctl restart httpd.service, /bin/kill" >> $SUDOERS
+mv $SUDOERS.bak $SUDOERS
+echo $IME "ALL = NOPASSWD: /bin/systemctl restart httpd.service, /bin/kill" >> $SUDOERS
