@@ -1,6 +1,7 @@
 git
 dmenu
 libx11
+libxinerama
 arandr
 dunst
 pulsemixer
@@ -12,4 +13,3 @@ firefox
 pcmanfm
 feh
 ranger
-grub-mkconfig

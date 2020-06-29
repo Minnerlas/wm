@@ -15,10 +15,8 @@ sudo pacman --noconfirm -S base-devel git
 
 cd
 git clone https://github.com/minnerlas/tackice
-
-
-git clone https://github.com/minnerlas/tackice
 cp -r tackice/* .
+
 rm -rvf .git 
 git clone https://aur.archlinux.org/yay.git
 cd yay
@@ -58,8 +56,9 @@ sudo cp ./razno/lightdm.conf /etc/lightdm/lightdm.conf
 # sudo systemctl enable lightdm.service
 # kopirati pozadine
 
-
 EOSU
 
 mv $SUDOERS.bak $SUDOERS
 echo $IME "ALL = NOPASSWD: /bin/systemctl restart httpd.service, /bin/kill" >> $SUDOERS
+
+passwd $IME
