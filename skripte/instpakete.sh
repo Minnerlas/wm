@@ -21,8 +21,8 @@ fi
 # cat  $PAKMAN
 if [ -n "$PAKMAN" ]
 then
-	sudo pacman -S --needed $(cat $PAKMAN)
+	sudo pacman --noconfirm -S --needed $(cat $PAKMAN)
 elif [ -n "$AUR" ]
 then
-	yay -S $(cat $AUR)
+	yay --noconfirm -S $(cat $AUR)
 fi
