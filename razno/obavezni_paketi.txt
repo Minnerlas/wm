@@ -1,0 +1,12 @@
+git
+dmenu
+arandr
+xorg
+xorg-xinit
+lightdm
+lightdm-gtk-greeter
+libreoffice
+firefox
+pcmanfm
+feh
+ranger
