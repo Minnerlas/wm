@@ -1,12 +1,14 @@
 git
 dmenu
 arandr
+dunst
+pulsemixer
 xorg
 xorg-xinit
 lightdm
 lightdm-gtk-greeter
-libreoffice
 firefox
 pcmanfm
 feh
 ranger
+grub-mkconfig
