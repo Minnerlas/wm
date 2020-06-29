@@ -13,6 +13,7 @@ su $IME << EOSU
 
 sudo pacman --noconfirm -S base-devel git
 
+cd
 git clone https://github.com/minnerlas/tackice
 
 
@@ -22,7 +23,9 @@ rm -rvf .git
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg --noconfirm -si
-git clone https://github.com/minnerlas/wm
+cd
+
+git clone https://github.com/Minnerlas/wm
 cd ~/wm
 
 # instalirati bitne pakete
@@ -50,6 +53,8 @@ cd ..
 ln ./razno/dwm.desktop /usr/share/xessions/dwm.desktop
 
 # podesiti /etc/lightdm/lightdm.conf ([Seat] user-session = dwm)
+sudo cp ./razno/lightdm.conf /etc/lightdm/lightdm.conf
+
 # sudo systemctl enable lightdm.service
 # kopirati pozadine
 
