@@ -21,12 +21,17 @@ cp -r tackice/* .
 rm -rvf .git 
 git clone https://aur.archlinux.org/yay.git
 cd yay
-sudo makepkg -si
-# git clone https://github.com/minnerlas/wm
-# cd
+makepkg --noconfirm -si
+git clone https://github.com/minnerlas/wm
+cd
+
 # instalirati bitne pakete
+./wm/skripte/instpakete.sh pak wm/razno/obavezni_paketi.txt
+./wm/skripte/instpakete.sh aur wm/razno/obavezni_paketi_aur.txt
+
 # wm/skripte/instpakete.sh
-# ln ~/wm/razno/dwm.desktop /usr/share/xessions/dwm.desktop
+ln ./wm/razno/dwm.desktop /usr/share/xessions/dwm.desktop
+
 # podesiti /etc/lightdm/lightdm.conf ([Seat] user-session = dwm)
 # sudo systemctl enable lightdm.service
 # kopirati pozadine
