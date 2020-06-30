@@ -4,7 +4,7 @@ IME=testime
 SUDOERS=/etc/sudoers
 SHELL=/bin/zsh
 
-useradd $IME -s $SHELL -m
+useradd $IME -s $SHELL -m -g $IME -G network,power,wheel,audio,optical,storage
 
 cp $SUDOERS $SUDOERS.bak
 echo $IME "ALL=(ALL) NOPASSWD:ALL" >> $SUDOERS
