@@ -9,13 +9,17 @@ useradd $IME -s $SHELL -m
 cp $SUDOERS $SUDOERS.bak
 echo $IME "ALL=(ALL) NOPASSWD:ALL" >> $SUDOERS
 
+mkdir /use/share/xsessions
+
 su $IME << EOSU
+
+mkdir Documents Pictures Desktop Music Public Videos Templates Downloads
 
 sudo pacman --noconfirm -S base-devel git
 
 cd
 git clone https://github.com/minnerlas/tackice
-cp -r tackice/* .
+cp -r ~/tackice/* ~
 
 rm -rvf .git 
 git clone https://aur.archlinux.org/yay.git
@@ -48,7 +52,6 @@ sudo make clean install
 cd ..
 
 # fhgf wm/skripte/instpakete.sh
-sudo mkdir /use/share/xsessions
 sudo ln ./razno/dwm.desktop /usr/share/xsessions/dwm.desktop
 
 # podesiti /etc/lightdm/lightdm.conf ([Seat] user-session = dwm)
@@ -57,9 +60,11 @@ sudo cp ./razno/lightdm.conf /etc/lightdm/lightdm.conf
 sudo systemctl enable lightdm.service
 # kopirati pozadine
 
+cp ./razno/wall.jpg ~/Pictures/wall.jpg
+
 EOSU
 
 mv $SUDOERS.bak $SUDOERS
-echo $IME "ALL = NOPASSWD: /bin/systemctl restart httpd.service, /bin/kill" >> $SUDOERS
+echo $IME "ALL = (root) NOPASSWD: /bin/systemctl restart httpd.service, /bin/kill" >> $SUDOERS
 
 passwd $IME

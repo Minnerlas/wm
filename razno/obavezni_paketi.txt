@@ -1,12 +1,13 @@
 git
+vim
 dmenu
 libx11
 libxinerama
-arandr
 dunst
 pulsemixer
 xorg
 xorg-xinit
+arandr
 lightdm
 lightdm-gtk-greeter
 pulseaudio
