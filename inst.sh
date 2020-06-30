@@ -38,7 +38,6 @@ cd
 git clone https://github.com/Minnerlas/wm
 cd ~/wm
 
-# instalirati bitne pakete
 ./skripte/instpakete.sh pak razno/obavezni_paketi.txt
 ./skripte/instpakete.sh aur razno/obavezni_paketi_aur.txt
 
@@ -59,14 +58,11 @@ cd slstatus
 sudo make clean install
 cd ..
 
-# fhgf wm/skripte/instpakete.sh
 sudo ln ./razno/dwm.desktop /usr/share/xsessions/dwm.desktop
 
-# podesiti /etc/lightdm/lightdm.conf ([Seat] user-session = dwm)
 sudo cp ./razno/lightdm.conf /etc/lightdm/lightdm.conf
 
 sudo systemctl enable lightdm.service
-# kopirati pozadine
 
 cp ./razno/wall.jpg ~/Pictures/wall.jpg
 

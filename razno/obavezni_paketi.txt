@@ -5,6 +5,7 @@ libx11
 libxinerama
 dunst
 pv
+htop
 pulsemixer
 xorg
 xorg-xinit
