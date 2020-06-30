@@ -17,7 +17,7 @@ useradd $IME -s $SHELL -m -g $IME -G network,power,wheel,audio,optical,storage
 cp $SUDOERS $SUDOERS.bak
 echo $IME "ALL=(ALL) NOPASSWD:ALL" >> $SUDOERS
 
-mkdir /use/share/xsessions
+mkdir /usr/share/xsessions
 
 su $IME << EOSU
 
@@ -75,7 +75,7 @@ echo $IME "ALL = (root) NOPASSWD: /bin/systemctl restart httpd.service, /bin/kil
 passwd $IME
 status=$?
 
-while [ $status -ne 0]
+while [ $status -ne 0 ]
 do
 	passwd $IME
 	status=$?
