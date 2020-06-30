@@ -72,7 +72,7 @@ echo $IME "ALL = (root) NOPASSWD: /bin/systemctl restart httpd.service, /bin/kil
 passwd $IME
 status=$?
 
-while [ $status -ne 0 ]
+while [ "$status" -ne "0" ]
 do
 	passwd $IME
 	status=$?
