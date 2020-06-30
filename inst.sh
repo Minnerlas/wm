@@ -62,13 +62,21 @@ sudo ln ./razno/dwm.desktop /usr/share/xsessions/dwm.desktop
 
 sudo cp ./razno/lightdm.conf /etc/lightdm/lightdm.conf
 
-sudo systemctl enable lightdm.service
+echo sudo systemctl enable lightdm.service
 
 cp ./razno/wall.jpg ~/Pictures/wall.jpg
 
 EOSU
 
 mv $SUDOERS.bak $SUDOERS
+echo "%wheel ALL = (ALL) ALL" >> $SUDOERS
 echo $IME "ALL = (root) NOPASSWD: /bin/systemctl restart httpd.service, /bin/kill" >> $SUDOERS
 
 passwd $IME
+status=$?
+
+while [ $status -ne 0]
+do
+	passwd $IME
+	status=$?
+done

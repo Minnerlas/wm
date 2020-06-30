@@ -4,6 +4,7 @@ dmenu
 libx11
 libxinerama
 dunst
+zsh
 pv
 htop
 pulsemixer
@@ -17,3 +18,4 @@ firefox
 pcmanfm
 feh
 ranger
+picom
