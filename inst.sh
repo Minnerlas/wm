@@ -4,6 +4,14 @@ IME=testime
 SUDOERS=/etc/sudoers
 SHELL=/bin/zsh
 
+groupadd $IME
+groupadd network
+groupadd power
+groupadd wheel
+groupadd audio
+groupadd optical
+groupadd storage
+
 useradd $IME -s $SHELL -m -g $IME -G network,power,wheel,audio,optical,storage
 
 cp $SUDOERS $SUDOERS.bak
@@ -13,11 +21,11 @@ mkdir /use/share/xsessions
 
 su $IME << EOSU
 
+cd
 mkdir Documents Pictures Desktop Music Public Videos Templates Downloads
 
 sudo pacman --noconfirm -S base-devel git
 
-cd
 git clone https://github.com/minnerlas/tackice
 cp -r ~/tackice/* ~
 

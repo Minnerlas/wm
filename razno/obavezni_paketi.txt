@@ -4,6 +4,7 @@ dmenu
 libx11
 libxinerama
 dunst
+pv
 pulsemixer
 xorg
 xorg-xinit
