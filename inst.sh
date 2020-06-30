@@ -34,6 +34,8 @@ cd
 git clone https://github.com/Minnerlas/wm
 cd ~/wm
 
+sudo cp -r skripte/* /usr/local/sbin
+
 ./skripte/instpakete.sh pak razno/obavezni_paketi.txt
 ./skripte/instpakete.sh aur razno/obavezni_paketi_aur.txt
 
