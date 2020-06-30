@@ -69,11 +69,7 @@ mv $SUDOERS.bak $SUDOERS
 echo "%wheel ALL = (ALL) ALL" >> $SUDOERS
 echo $IME "ALL = (root) NOPASSWD: /bin/systemctl restart httpd.service, /bin/kill" >> $SUDOERS
 
-passwd $IME
-status=$?
-
-while [ -n "$status" ]
+until passwd $IME
 do
-	passwd $IME
-	status=$?
+	echo
 done
