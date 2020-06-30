@@ -22,7 +22,7 @@ sudo pacman --noconfirm -S base-devel git
 
 git clone https://github.com/minnerlas/tackice
 cd tackice
-cp -r * ..
+sudo cp -r * ..
 cd
 
 rm -rvf .git 
