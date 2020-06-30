@@ -13,6 +13,7 @@ echo $IME "ALL=(ALL) NOPASSWD:ALL" >> $SUDOERS
 
 mkdir /usr/share/xsessions
 
+setopt NULL_GLOB
 su $IME << EOSU
 
 cd
@@ -75,3 +76,4 @@ until passwd $IME
 do
 	echo
 done
+unsetopt NULL_GLOB
