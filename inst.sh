@@ -5,12 +5,6 @@ SUDOERS=/etc/sudoers
 SHELL=/bin/zsh
 
 groupadd $IME
-groupadd network
-groupadd power
-groupadd wheel
-groupadd audio
-groupadd optical
-groupadd storage
 
 useradd $IME -s $SHELL -m -g $IME -G network,power,wheel,audio,optical,storage
 
@@ -27,7 +21,9 @@ mkdir Documents Pictures Desktop Music Public Videos Templates Downloads
 sudo pacman --noconfirm -S base-devel git
 
 git clone https://github.com/minnerlas/tackice
-cp -r ~/tackice/* ~
+cd tackice
+cp -r * ..
+cd
 
 rm -rvf .git 
 git clone https://aur.archlinux.org/yay.git
@@ -65,6 +61,7 @@ sudo cp ./razno/lightdm.conf /etc/lightdm/lightdm.conf
 echo sudo systemctl enable lightdm.service
 
 cp ./razno/wall.jpg ~/Pictures/wall.jpg
+cp ./razno/wall.jpg /usr/share/pixmaps/wall.jpg
 
 EOSU
 
