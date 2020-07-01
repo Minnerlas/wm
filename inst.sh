@@ -13,7 +13,6 @@ echo $IME "ALL=(ALL) NOPASSWD:ALL" >> $SUDOERS
 
 mkdir /usr/share/xsessions
 
-setopt NULL_GLOB
 su $IME << EOSU
 
 cd
@@ -65,8 +64,8 @@ sudo cp ./razno/wall.jpg /usr/share/pixmaps/wall.jpg
 
 EOSU
 
-cp /home/$IME/tackice/* /home/$IME/
-cp /home/$IME/wm/skripte/*  /usr/local/sbin/
+cp "/home/$IME/tackice/*" /home/$IME/
+cp "/home/$IME/wm/skripte/*"  /usr/local/sbin/
 
 mv $SUDOERS.bak $SUDOERS
 echo "%wheel ALL = (ALL) ALL" >> $SUDOERS
@@ -76,4 +75,3 @@ until passwd $IME
 do
 	echo
 done
-unsetopt NULL_GLOB
