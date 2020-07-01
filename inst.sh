@@ -22,9 +22,6 @@ mkdir Documents Pictures Desktop Music Public Videos Templates Downloads
 sudo pacman --noconfirm -S base-devel git
 
 git clone https://github.com/minnerlas/tackice
-cd tackice
-sudo cp -r * ..
-cd
 
 rm -rvf .git 
 git clone https://aur.archlinux.org/yay.git
@@ -57,16 +54,19 @@ cd slstatus
 sudo make clean install
 cd ..
 
-sudo ln ./razno/dwm.desktop /usr/share/xsessions/dwm.desktop
+sudo cp ./razno/dwm.desktop /usr/share/xsessions/dwm.desktop
 
 sudo cp ./razno/lightdm.conf /etc/lightdm/lightdm.conf
 
 echo sudo systemctl enable lightdm.service
 
 cp ./razno/wall.jpg ~/Pictures/wall.jpg
-cp ./razno/wall.jpg /usr/share/pixmaps/wall.jpg
+sudo cp ./razno/wall.jpg /usr/share/pixmaps/wall.jpg
 
 EOSU
+
+cp /home/$IME/tackice/* /home/$IME/
+cp /home/$IME/wm/skripte/*  /usr/local/sbin/
 
 mv $SUDOERS.bak $SUDOERS
 echo "%wheel ALL = (ALL) ALL" >> $SUDOERS
