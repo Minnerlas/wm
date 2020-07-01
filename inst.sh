@@ -22,11 +22,11 @@ groupadd $IME
 useradd $IME -s $SHELL -m -g $IME -G network,power,wheel,audio,optical,storage
 
 cp $SUDOERS $SUDOERS.bak
-echo $IME "ALL=(ALL) NOPASSWD:ALL" >> $SUDOERS
+echo "$IME" "ALL=(ALL) NOPASSWD:ALL" >> $SUDOERS
 
 mkdir /usr/share/xsessions
 
-su $IME << EOSU
+su "$IME" << EOSU
 
 cd
 mkdir Documents Pictures Desktop Music Public Videos Templates Downloads
@@ -70,14 +70,14 @@ sudo cp ./razno/dwm.desktop /usr/share/xsessions/dwm.desktop
 
 sudo cp ./razno/lightdm.conf /etc/lightdm/lightdm.conf
 
-echo sudo systemctl enable lightdm.service
+sudo systemctl enable lightdm.service
 
 cp ./razno/wall.jpg ~/Pictures/wall.jpg
 sudo cp ./razno/wall.jpg /usr/share/pixmaps/wall.jpg
 
 EOSU
 
-cp "/home/$IME/tackice/*" /home/$IME/
+rsync -a "/home/$IME/tackice/" "/home/$IME/"
 cp "/home/$IME/wm/skripte/*"  /usr/local/sbin/
 
 mv $SUDOERS.bak $SUDOERS

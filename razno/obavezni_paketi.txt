@@ -6,6 +6,7 @@ libxinerama
 dunst
 zsh
 pv
+rsync
 htop
 pulsemixer
 xorg
