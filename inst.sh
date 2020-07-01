@@ -4,6 +4,19 @@ IME=testime
 SUDOERS=/etc/sudoers
 SHELL=/bin/zsh
 
+# Prompts user for new username an password.
+IME=$(dialog --inputbox "First, please enter a name for the user account." 10 60 3>&1 1>&2 2>&3 3>&1) || exit
+while ! echo "$IME" | grep "^[a-z_][a-z0-9_-]*$" >/dev/null 2>&1; do
+	IME=$(dialog --no-cancel --inputbox "Username not valid. Give a username beginning with a letter, with only lowercase letters, - or _." 10 60 3>&1 1>&2 2>&3 3>&1)
+done
+pass1=$(dialog --no-cancel --passwordbox "Enter a password for that user." 10 60 3>&1 1>&2 2>&3 3>&1)
+pass2=$(dialog --no-cancel --passwordbox "Retype password." 10 60 3>&1 1>&2 2>&3 3>&1)
+while ! [ "$pass1" = "$pass2" ]; do
+	unset pass2
+	pass1=$(dialog --no-cancel --passwordbox "Passwords do not match.\\n\\nEnter password again." 10 60 3>&1 1>&2 2>&3 3>&1)
+	pass2=$(dialog --no-cancel --passwordbox "Retype password." 10 60 3>&1 1>&2 2>&3 3>&1)
+done
+
 groupadd $IME
 
 useradd $IME -s $SHELL -m -g $IME -G network,power,wheel,audio,optical,storage
@@ -71,7 +84,4 @@ mv $SUDOERS.bak $SUDOERS
 echo "%wheel ALL = (ALL) ALL" >> $SUDOERS
 echo $IME "ALL = (root) NOPASSWD: /bin/systemctl restart httpd.service, /bin/kill" >> $SUDOERS
 
-until passwd $IME
-do
-	echo
-done
+echo "$IME:$pass1" | chpasswd
