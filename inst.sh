@@ -70,13 +70,12 @@ sudo cp ./razno/dwm.desktop /usr/share/xsessions/dwm.desktop
 
 sudo cp ./razno/lightdm.conf /etc/lightdm/lightdm.conf
 
-sudo systemctl enable lightdm.service
-
 cp ./razno/wall.jpg ~/Pictures/wall.jpg
 sudo cp ./razno/wall.jpg /usr/share/pixmaps/wall.jpg
 
 EOSU
 
+systemctl enable lightdm.service
 rsync -a "/home/$IME/tackice/" "/home/$IME/"
 cp "/home/$IME/wm/skripte/*"  /usr/local/sbin/
 
