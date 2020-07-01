@@ -9,7 +9,6 @@ zsh
 pv
 rsync
 htop
-pulsemixer
 xorg
 xorg-xinit
 arandr
