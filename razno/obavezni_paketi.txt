@@ -4,6 +4,7 @@ dmenu
 libx11
 libxinerama
 dunst
+libnotify
 zsh
 pv
 rsync
@@ -14,7 +15,7 @@ xorg-xinit
 arandr
 lightdm
 lightdm-gtk-greeter
-pulseaudio
+alsa-utils
 firefox
 lynx
 pcmanfm
