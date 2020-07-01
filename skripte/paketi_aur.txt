@@ -2,13 +2,11 @@ b43-firmware-classic
 bashmount
 green-recorder
 hollywood
-kazam
 mate-tweak
 networkmanager-dmenu-git
 numix-circle-icon-theme-git
 numix-icon-theme-git
 oolite
-skypeforlinux-stable-bin
 tabbed
 toilet
 yay-bin
