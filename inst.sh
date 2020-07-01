@@ -17,6 +17,8 @@ while ! [ "$pass1" = "$pass2" ]; do
 	pass2=$(dialog --no-cancel --passwordbox "Retype password." 10 60 3>&1 1>&2 2>&3 3>&1)
 done
 
+clear
+
 groupadd $IME
 
 useradd $IME -s $SHELL -m -g $IME -G network,power,wheel,audio,optical,storage
@@ -77,10 +79,10 @@ EOSU
 
 systemctl enable lightdm.service
 rsync -a "/home/$IME/tackice/" "/home/$IME/"
-cp "/home/$IME/wm/skripte/*"  /usr/local/sbin/
+rsync -a "/home/$IME/wm/skripte/"  /usr/local/sbin/
 
 mv $SUDOERS.bak $SUDOERS
 echo "%wheel ALL = (ALL) ALL" >> $SUDOERS
-echo $IME "ALL = (root) NOPASSWD: /bin/systemctl restart httpd.service, /bin/kill" >> $SUDOERS
+echo $IME "ALL = (root) NOPASSWD: /usr/bin/shutdown, /usr/bin/reboot,/bin/kill" >> $SUDOERS
 
 echo "$IME:$pass1" | chpasswd
