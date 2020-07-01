@@ -1,7 +1,5 @@
-b43-firmware-classic
 bashmount
 networkmanager-dmenu-git
-numix-circle-icon-theme-git
-numix-icon-theme-git
 tabbed
 toilet
+mimi-git

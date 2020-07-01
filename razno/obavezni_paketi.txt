@@ -14,11 +14,15 @@ xorg-xinit
 arandr
 lightdm
 lightdm-gtk-greeter
+alsamixer
 alsa-utils
 firefox
 lynx
 pcmanfm
+mlocate
 feh
 ranger
 picom
 xcompmgr
+zathura
+zathura-pdf-mupdf
