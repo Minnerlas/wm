@@ -83,6 +83,6 @@ rsync -a "/home/$IME/wm/skripte/"  /usr/local/sbin/
 
 mv $SUDOERS.bak $SUDOERS
 echo "%wheel ALL = (ALL) ALL" >> $SUDOERS
-echo $IME "ALL = (root) NOPASSWD: /usr/bin/shutdown, /usr/bin/reboot,/bin/kill" >> $SUDOERS
+echo $IME "ALL = (root) NOPASSWD: /usr/bin/shutdown,/usr/bin/reboot,/bin/kill" >> $SUDOERS
 
 echo "$IME:$pass1" | chpasswd
