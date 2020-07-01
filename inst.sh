@@ -37,7 +37,6 @@ sudo pacman --noconfirm -S base-devel git
 
 git clone https://github.com/minnerlas/tackice
 
-rm -rvf .git 
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg --noconfirm -si
@@ -45,8 +44,6 @@ cd
 
 git clone https://github.com/Minnerlas/wm
 cd ~/wm
-
-sudo cp -r skripte/* /usr/local/sbin
 
 ./skripte/instpakete.sh pak razno/obavezni_paketi.txt
 ./skripte/instpakete.sh aur razno/obavezni_paketi_aur.txt
@@ -79,7 +76,7 @@ EOSU
 
 systemctl enable lightdm.service
 rsync -a "/home/$IME/tackice/" "/home/$IME/"
-rsync -a "/home/$IME/wm/skripte/"  /usr/local/sbin/
+rsync -a "/home/$IME/wm/skripte/" /usr/local/sbin/
 
 mv $SUDOERS.bak $SUDOERS
 echo "%wheel ALL = (ALL) ALL" >> $SUDOERS
