@@ -6,6 +6,7 @@ libxinerama
 dunst
 libnotify
 zsh
+zsh-syntax-highlighting
 pv
 rsync
 htop

@@ -45,8 +45,8 @@ cd
 git clone https://github.com/Minnerlas/wm
 cd ~/wm
 
-./skripte/instpakete.sh pak razno/obavezni_paketi.txt
-./skripte/instpakete.sh aur razno/obavezni_paketi_aur.txt
+./skripte/instpakete.sh pak ./razno/obavezni_paketi.txt
+./skripte/instpakete.sh aur ./razno/obavezni_paketi_aur.txt
 
 git clone https://github.com/minnerlas/dwm
 cd dwm
