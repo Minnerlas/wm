@@ -142,6 +142,10 @@ then
 	esac
 	cp "/home/$IME/wm/razno/dwm.desktop" /usr/share/xsessions/dwm.desktop
 	cp "/home/$IME/wm/razno/lightdm.conf" /etc/lightdm/lightdm.conf
+	cp "/home/$IME/wm/razno/lightdm-gtk-greeter.conf" /etc/lightdm/lightdm-gtk-greeter.conf
+	tar xvf "/home/$IME/wm/razno/Cabinet-Dark-Blue.tar.xz" -C /usr/share/themes
+	cp "/home/$IME/wm/razno/ldm-wall.jpg" /usr/share/pixmaps/ 
+	cp "/home/$IME/wm/razno/ldm-user.jpg" /usr/share/pixmaps/ 
 fi
 
 mv $SUDOERS.bak $SUDOERS

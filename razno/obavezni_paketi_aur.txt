@@ -1,5 +1,4 @@
 bashmount
 networkmanager-dmenu-git
 tabbed
-toilet
 mimi-git
