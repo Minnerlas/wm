@@ -123,8 +123,6 @@ esac
 
 if [ "$LDM" == "1" ]
 then
-	cp "/home/$IME/wm/razno/dwm.desktop" /usr/share/xsessions/dwm.desktop
-	cp "/home/$IME/wm/razno/lightdm.conf" /etc/lightdm/lightdm.conf
 	case "$INIT" in
 		"systemd")
 			"/home/$IME/wm/skripte/instpakete.sh" pak "/home/$IME/wm/razno/lightdm-sysd.txt"
@@ -138,6 +136,8 @@ then
 			dialog --infobox "Nije trebalo da dodje do ovoga! 2" 10 30
 			;;
 	esac
+	cp "/home/$IME/wm/razno/dwm.desktop" /usr/share/xsessions/dwm.desktop
+	cp "/home/$IME/wm/razno/lightdm.conf" /etc/lightdm/lightdm.conf
 fi
 
 mv $SUDOERS.bak $SUDOERS
