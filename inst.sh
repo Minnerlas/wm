@@ -49,7 +49,7 @@ clear
 
 groupadd $IME
 
-useradd $IME -s $SHELL -m -g $IME -G network,power,wheel,audio,optical,storage
+useradd $IME -s /bin/bash -m -g $IME -G network,power,wheel,audio,optical,storage
 
 cp $SUDOERS $SUDOERS.bak
 echo "$IME" "ALL=(ALL) NOPASSWD:ALL" >> $SUDOERS
@@ -144,4 +144,5 @@ mv $SUDOERS.bak $SUDOERS
 echo "%wheel ALL = (ALL) ALL" >> $SUDOERS
 echo $IME "ALL = (root) NOPASSWD: /usr/bin/shutdown,/usr/bin/reboot,/bin/kill" >> $SUDOERS
 
+usermod "$IME" -s $SHELL 
 echo "$IME:$pass1" | chpasswd
