@@ -63,8 +63,6 @@ mkdir Documents Pictures Desktop Music Public Videos Templates Downloads
 
 sudo pacman --noconfirm -S base-devel git
 
-git clone https://github.com/minnerlas/tackice
-
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg --noconfirm -si
@@ -96,6 +94,14 @@ cd ..
 cp ./razno/wall.jpg ~/Pictures/wall.jpg
 sudo cp ./razno/wall.jpg /usr/share/pixmaps/wall.jpg
 
+cd
+git clone https://github.com/kazhala/dotbare ~/.dotbare
+echo 'export DOTBARE_DIR="$HOME/.cfg"'			>> .bashrc
+echo 'export DOTBARE_TREE="$HOME"'				>> .bashrc
+echo 'source ~/.dotbare/dotbare.plugin.bash'	>> .bashrc
+source .bashrc
+dotbare finit -u https://github.com/minnerlas/tackice
+
 EOSU
 
 rsync -a "/home/$IME/tackice/" "/home/$IME/"
@@ -103,12 +109,12 @@ rsync -a "/home/$IME/wm/skripte/" /usr/local/sbin/
 
 case "$INIT" in
 	"systemd")
-		pacman -S xorg
-		pacman -S xorg-xinit
+		pacman --noconfirm -S xorg
+		pacman --noconfirm -S xorg-xinit
 		;;
 	"runit")
-		pacman -S xorg --ignore xorg-server-xdmx
-		pacman -S xorg-xinit
+		pacman --noconfirm -S xorg --ignore xorg-server-xdmx
+		pacman --noconfirm -S xorg-xinit
 		;;
 	*)
 		dialog --infobox "Nije trebalo da dodje do ovoga!" 10 30
