@@ -6,7 +6,6 @@ SHELL=/bin/zsh
 
 pacman --noconfirm -Syu
 pacman --noconfirm -S dialog
-pacman --noconfirm -S zsh
 
 # Prompts user for new username an password.
 IME=$(dialog --inputbox "First, please enter a name for the user account." 10 60 3>&1 1>&2 2>&3 3>&1) || exit
@@ -46,6 +45,8 @@ rm -f $TMP
 echo $INIT
 
 clear
+
+pacman --noconfirm -S zsh
 
 groupadd $IME
 
@@ -96,10 +97,10 @@ sudo cp ./razno/wall.jpg /usr/share/pixmaps/wall.jpg
 
 cd
 git clone https://github.com/kazhala/dotbare ~/.dotbare
-echo 'export DOTBARE_DIR="\$HOME/.cfg"'			>> .bashrc
-echo 'export DOTBARE_TREE="\$HOME"'				>> .bashrc
-echo 'source ~/.dotbare/dotbare.plugin.bash'	>> .bashrc
-source .bashrc
+export DOTBARE_DIR="$HOME/.cfg"
+export DOTBARE_TREE="$HOME"
+source ~/.dotbare/dotbare.plugin.bash
+
 dotbare finit -u https://github.com/minnerlas/tackice
 
 EOSU
