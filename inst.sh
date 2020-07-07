@@ -103,6 +103,9 @@ source ~/.dotbare/dotbare.plugin.bash
 
 dotbare finit -u https://github.com/minnerlas/tackice
 
+cd wm
+git clone https://github.com/salman-abedin/devour.git && cd devour && sudo make install
+
 EOSU
 
 # rsync -a "/home/$IME/tackice/" "/home/$IME/"
