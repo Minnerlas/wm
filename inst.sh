@@ -104,7 +104,7 @@ dotbare finit -u https://github.com/minnerlas/tackice
 
 EOSU
 
-rsync -a "/home/$IME/tackice/" "/home/$IME/"
+# rsync -a "/home/$IME/tackice/" "/home/$IME/"
 rsync -a "/home/$IME/wm/skripte/" /usr/local/sbin/
 
 case "$INIT" in
