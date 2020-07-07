@@ -20,5 +20,6 @@ feh
 ranger
 picom
 xcompmgr
+xdo
 zathura
 zathura-pdf-mupdf
