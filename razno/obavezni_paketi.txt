@@ -10,11 +10,7 @@ zsh-syntax-highlighting
 pv
 rsync
 htop
-xorg
-xorg-xinit
 arandr
-lightdm
-lightdm-gtk-greeter
 alsa-utils
 firefox
 lynx

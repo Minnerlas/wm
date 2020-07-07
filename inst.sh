@@ -17,6 +17,30 @@ while ! [ "$pass1" = "$pass2" ]; do
 	pass2=$(dialog --no-cancel --passwordbox "Retype password." 10 60 3>&1 1>&2 2>&3 3>&1)
 done
 
+INIT=""
+TMP=".tmp"
+LDM=""
+
+dialog --title "Init system" \
+	--menu "Choose your installed init system:" 10 30 2 \
+	1 "systemd" \
+	2 "runit" 2> $TMP
+
+case $(<$TMP) in
+	1) INIT="systemd";;
+	2) INIT="runit";;
+esac
+
+dialog --title "Message"  --yesno "Do you want to install lightdm display manager?" 6 25 
+if [ "$?" != "1" ]
+then 
+	LDM="1"
+fi
+
+rm -f $TMP
+
+echo $INIT
+
 clear
 
 groupadd $IME
@@ -65,18 +89,46 @@ cd slstatus
 sudo make clean install
 cd ..
 
-sudo cp ./razno/dwm.desktop /usr/share/xsessions/dwm.desktop
-
-sudo cp ./razno/lightdm.conf /etc/lightdm/lightdm.conf
-
 cp ./razno/wall.jpg ~/Pictures/wall.jpg
 sudo cp ./razno/wall.jpg /usr/share/pixmaps/wall.jpg
 
 EOSU
 
-systemctl enable lightdm.service
 rsync -a "/home/$IME/tackice/" "/home/$IME/"
 rsync -a "/home/$IME/wm/skripte/" /usr/local/sbin/
+
+case "$INIT" in
+	"systemd")
+		pacman -S xorg
+		pacman -S xorg-xinit
+		;;
+	"runit")
+		pacman -S xorg --ignore xorg-server-xdmx
+		pacman -S xorg-xinit
+		;;
+	*)
+		dialog --infobox "Nije trebalo da dodje do ovoga!" 10 30
+		;;
+esac
+
+if [ "$LDM" == "1" ]
+then
+	cp "/home/$IME/wm/razno/dwm.desktop" /usr/share/xsessions/dwm.desktop
+	cp "/home/$IME/wm/razno/lightdm.conf" /etc/lightdm/lightdm.conf
+	case "$INIT" in
+		"systemd")
+			"/home/$IME/wm/skripte/instpakete.sh" pak "/home/$IME/wm/razno/lightdm-sysd.txt"
+			systemctl enable lightdm.service
+			;;
+		"runit")
+			"/home/$IME/wm/skripte/instpakete.sh" pak  "/home/$IME/wm/razno/lightdm-runit.txt"
+			ln -s /etc/runit/sv/lightdm /run/runit/service
+			;;
+		*)
+			dialog --infobox "Nije trebalo da dodje do ovoga! 2" 10 30
+			;;
+	esac
+fi
 
 mv $SUDOERS.bak $SUDOERS
 echo "%wheel ALL = (ALL) ALL" >> $SUDOERS
