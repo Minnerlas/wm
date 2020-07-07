@@ -4,7 +4,9 @@ IME=testime
 SUDOERS=/etc/sudoers
 SHELL=/bin/zsh
 
+pacman --noconfirm -Syu
 pacman --noconfirm -S dialog
+pacman --noconfirm -S zsh
 
 # Prompts user for new username an password.
 IME=$(dialog --inputbox "First, please enter a name for the user account." 10 60 3>&1 1>&2 2>&3 3>&1) || exit
