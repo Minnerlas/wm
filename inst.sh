@@ -97,8 +97,8 @@ sudo cp ./razno/wall.jpg /usr/share/pixmaps/wall.jpg
 
 cd
 git clone https://github.com/kazhala/dotbare ~/.dotbare
-export DOTBARE_DIR="$HOME/.cfg"
-export DOTBARE_TREE="$HOME"
+export DOTBARE_DIR="/home/$IME/.cfg/"
+export DOTBARE_TREE="/home/$IME/"
 source ~/.dotbare/dotbare.plugin.bash
 
 dotbare finit -u https://github.com/minnerlas/tackice
