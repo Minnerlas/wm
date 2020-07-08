@@ -21,5 +21,6 @@ ranger
 picom
 xcompmgr
 xdo
+numlockx
 zathura
 zathura-pdf-mupdf
