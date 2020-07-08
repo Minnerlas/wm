@@ -2,11 +2,9 @@ b43-firmware-classic
 bashmount
 green-recorder
 hollywood
-mate-tweak
-networkmanager-dmenu-git
+mps-youtube-git
 numix-circle-icon-theme-git
 numix-icon-theme-git
 oolite
 tabbed
 toilet
-yay-bin
