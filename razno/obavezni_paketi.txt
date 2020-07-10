@@ -1,6 +1,7 @@
 git
 vim
 dmenu
+slock
 libx11
 libxinerama
 dunst
