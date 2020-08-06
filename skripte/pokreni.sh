@@ -4,6 +4,12 @@ fajl=$1
 
 ext=`echo $fajl | awk -F. '{print $NF}' -`
 
+if test -f "build.sh"; then
+	clear
+	./build.sh
+	exit
+fi
+
 case $ext in 
 	py)
 		python $fajl

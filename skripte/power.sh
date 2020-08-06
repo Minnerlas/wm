@@ -4,10 +4,10 @@ OPCIJA=$(echo -e "Isključi\nRestartuj" | dmenu -l 5)
 
 case $OPCIJA in 
 	"Isključi")
-		shutdown 0
+		sync && sudo loginctl poweroff
 		;;
 	"Restartuj")
-		reboot
+		sync && sudo loginctl reboot
 		;;
 	*)
 		echo $OPCIJA | bash

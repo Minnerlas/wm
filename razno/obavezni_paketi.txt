@@ -15,6 +15,7 @@ arandr
 alsa-utils
 firefox
 lynx
+man-pages
 pcmanfm
 mlocate
 feh
@@ -22,6 +23,7 @@ ranger
 picom
 xcompmgr
 xdo
+xautolock
 numlockx
 zathura
 zathura-pdf-mupdf
