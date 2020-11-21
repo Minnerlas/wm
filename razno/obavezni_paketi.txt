@@ -17,6 +17,8 @@ firefox
 lynx
 man-pages
 pcmanfm
+scrot
+flameshot
 mlocate
 feh
 ranger
@@ -25,5 +27,6 @@ xcompmgr
 xdo
 xautolock
 numlockx
+unzip
 zathura
 zathura-pdf-mupdf
