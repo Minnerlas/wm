@@ -21,6 +21,9 @@ case $ext in
 	c)
 		tcc -run $fajl
 		;;
+	cpp)
+		g++ $fajl && ./a.out && rm a.out
+		;;
 	rs)
 		cp $fajl main.rs && cargo run --release
 		rm -f $fajl.out
