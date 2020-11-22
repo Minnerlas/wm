@@ -117,7 +117,7 @@ case "$INIT" in
 		pacman --noconfirm -S xorg-xinit
 		;;
 	"runit")
-		pacman --noconfirm -S xorg --ignore xorg-server-xdmx
+		pacman --noconfirm -S xorg
 		pacman --noconfirm -S xorg-xinit
 		;;
 	*)
@@ -150,7 +150,8 @@ fi
 
 mv $SUDOERS.bak $SUDOERS
 echo "%wheel ALL = (ALL) ALL" >> $SUDOERS
-echo $IME "ALL = (root) NOPASSWD: /usr/bin/shutdown,/usr/bin/reboot,/bin/kill" >> $SUDOERS
+echo "ALL ALL = (ALL) NOPASSWD: /usr/bin/loginctl,/usr/local/sbin/backlight.sh,/usr/bin/ip" >> $SUDOERS
+echo $IME "ALL = (root) NOPASSWD: /usr/bin/shutdown,/usr/bin/reboot,/bin/kill,/usr/bin/loginctl,/usr/bin/connman_dmenu" >> $SUDOERS
 
 usermod "$IME" -s $SHELL 
 echo "$IME:$pass1" | chpasswd
