@@ -2,9 +2,14 @@
 
 fajl=$1
 
-ext=`echo $fajl | awk -F. '{print $NF}' -`
+ext=$(echo $fajl | awk -F. '{print $NF}' -)
+ime=$(echo $fajl | awk -F. '{$NF=""; print $0}' -)
 
-if test -f "build.sh"; then
+if test -f "Makefile"; then 
+	clear
+	make
+	exit
+elif test -f "build.sh"; then
 	clear
 	./build.sh
 	exit
@@ -17,12 +22,14 @@ case $ext in
 	sh)
 		bash $fajl
 		;;
-
+	tex)
+		xelatex $fajl && zathura $ime.pdf
+		;;
 	c)
 		tcc -run $fajl
 		;;
 	cpp)
-		g++ $fajl && ./a.out && rm a.out
+		g++ -std=c++17 $fajl && ./a.out && rm a.out
 		;;
 	rs)
 		cp $fajl main.rs && cargo run --release
