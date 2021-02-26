@@ -1,4 +1,4 @@
 bashmount
 networkmanager-dmenu-git
 tabbed
-mimi-git
+connman_dmenu-git

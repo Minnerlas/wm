@@ -153,5 +153,6 @@ echo "%wheel ALL = (ALL) ALL" >> $SUDOERS
 echo "ALL ALL = (ALL) NOPASSWD: /usr/bin/loginctl,/usr/local/sbin/backlight.sh,/usr/bin/ip" >> $SUDOERS
 echo $IME "ALL = (root) NOPASSWD: /usr/bin/shutdown,/usr/bin/reboot,/bin/kill,/usr/bin/loginctl,/usr/bin/connman_dmenu" >> $SUDOERS
 
+ln -s $(which vim) /bin/vi
 usermod "$IME" -s $SHELL 
 echo "$IME:$pass1" | chpasswd
