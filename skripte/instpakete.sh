@@ -5,7 +5,7 @@ AUR=""
 
 if [ $# -gt 0 ] 
 then 
-	if [ $1 == "aur" ]
+	if [ "$1" == "aur" ]
 	then
 		AUR=$2
 	else
@@ -21,8 +21,8 @@ fi
 # cat  $PAKMAN
 if [ -n "$PAKMAN" ]
 then
-	sudo pacman --noconfirm -S --needed $(cat $PAKMAN)
+	sudo pacman --noconfirm -S --needed $(cat "$PAKMAN")
 elif [ -n "$AUR" ]
 then
-	yay --noconfirm -S $(cat $AUR)
+	yay --noconfirm -S $(cat "$AUR")
 fi

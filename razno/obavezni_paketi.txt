@@ -1,6 +1,8 @@
 git
+gcr
 vim
 dmenu
+dash
 slock
 libx11
 libxinerama
@@ -15,6 +17,7 @@ arandr
 alsa-utils
 firefox
 lynx
+inetutils
 man-pages
 pcmanfm
 scrot

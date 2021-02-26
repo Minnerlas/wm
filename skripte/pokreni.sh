@@ -2,8 +2,8 @@
 
 fajl=$1
 
-ext=$(echo $fajl | awk -F. '{print $NF}' -)
-ime=$(echo $fajl | awk -F. '{$NF=""; print $0}' -)
+ext=$(echo "$fajl" | awk -F. '{print $NF}' -)
+ime=$(echo "$fajl" | awk -F. '{$NF=""; print $0}' -)
 
 if test -f "Makefile"; then 
 	clear
@@ -17,23 +17,23 @@ fi
 
 case $ext in 
 	py)
-		python $fajl
+		python "$fajl"
 		;;
 	sh)
-		bash $fajl
+		bash "$fajl"
 		;;
 	tex)
-		xelatex $fajl && zathura $ime.pdf
+		xelatex "$fajl" && zathura "$ime.pdf"
 		;;
 	c)
-		tcc -run $fajl
+		tcc -run "$fajl"
 		;;
 	cpp)
-		g++ -std=c++17 $fajl && ./a.out && rm a.out
+		g++ -std=c++17 "$fajl" && ./a.out && rm a.out
 		;;
 	rs)
-		cp $fajl main.rs && cargo run --release
-		rm -f $fajl.out
+		cp "$fajl" main.rs && cargo run --release
+		rm -f "$fajl.out"
 		;;
 	*)
 		echo "[GREŠKA] Nepoznata ekstenzija"

@@ -2,7 +2,7 @@
 
 OPCIJA=$(echo -e "Isključi\nRestartuj" | dmenu -l 5)
 
-case $OPCIJA in 
+case "$OPCIJA" in 
 	"Isključi")
 		sync && sudo loginctl poweroff
 		;;
@@ -10,7 +10,7 @@ case $OPCIJA in
 		sync && sudo loginctl reboot
 		;;
 	*)
-		echo $OPCIJA | bash
+		echo "$OPCIJA" | bash
 		;;
 
 esac

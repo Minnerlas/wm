@@ -2,8 +2,8 @@
 
 BACKLIGHT="/sys/class/backlight/$(ls /sys/class/backlight/)"
 
-MAKS=$(cat $BACKLIGHT/max_brightness)
-let KORAK=MAKS/10
+MAKS=$(cat "$BACKLIGHT"/max_brightness)
+KORAK=$((MAKS/10))
 
 #echo $KORAK
 
@@ -11,7 +11,7 @@ case $1 in
 	+)
 		;;
 	-)
-		let KORAK=-KORAK
+		KORAK=$((-KORAK))
 		;;
 	*)
 		echo "Greška"
@@ -19,9 +19,9 @@ case $1 in
 		;;
 esac
 
-TREN=$(cat $BACKLIGHT/actual_brightness)
+TREN=$(cat "$BACKLIGHT"/actual_brightness)
 
-let TREN=TREN+KORAK
+TREN=$(( TREN + KORAK ))
 
 if [ "$TREN" -lt "1" ]
 then
@@ -32,4 +32,4 @@ then
 fi
 
 #ls $BACKLIGHT
-echo $TREN > $BACKLIGHT/brightness
+echo "$TREN" > "$BACKLIGHT"/brightness
