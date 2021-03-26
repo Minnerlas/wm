@@ -32,4 +32,4 @@ then
 fi
 
 #ls $BACKLIGHT
-echo "$TREN" > "$BACKLIGHT"/brightness
+echo "$TREN" > "$BACKLIGHT/brightness"

@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/bin/sh
 
-OPCIJA=$(echo -e "Isključi\nRestartuj" | dmenu -l 5)
+OPCIJA="$(printf "Isključi\nRestartuj" | dmenu -l 5)"
 
 case "$OPCIJA" in 
 	"Isključi")

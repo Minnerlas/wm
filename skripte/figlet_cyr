@@ -2,4 +2,4 @@
 
 # Font ascii12.tlf je neophodno staviti u /usr/share/figlet/fonts
 
-figlet -w 130 -C utf8 -f ascii12.tlf $1
+figlet -w 130 -C utf8 -f ascii12.tlf "$1"

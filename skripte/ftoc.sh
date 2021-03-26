@@ -1,4 +1,4 @@
-#!/bin/dash
+#!/bin/sh
 
 IFS=
 
@@ -10,8 +10,8 @@ echo "static const char ${ime}[] = " > "$IZLAZ"
 
 while read -r LINIJA
 do
-	echo -n "\t" >> "$IZLAZ"
+	printf '\t' >> "$IZLAZ"
 	iz=$(echo "$LINIJA" | sed 's/\"/\\\"/g')
-	echo "\"$iz\\\\n\"" >> "$IZLAZ"
+	printf '"%s\\n"\n' "$iz" >> "$IZLAZ"
 done
 echo ";" >> "$IZLAZ"
