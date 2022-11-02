@@ -3,7 +3,7 @@
 clear
 fortune | cowsay -f tux -n
 
-while read -r 
+while read -r
 do
 	clear
 	fortune | cowsay -f tux -n
