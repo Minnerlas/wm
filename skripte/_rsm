@@ -2,9 +2,6 @@
 
 # Copy to $HOME/.local/share/zsh/functions/Completion
 
-SVDIR='/etc/runit/sv'
-RUNSVDIR='/etc/runit/runsvdir/default'
-
 _rsm_all_services() {
 	local IFS=$'\n'
 	# Extract names and email addresses from gpg --list-keys
@@ -18,9 +15,81 @@ _rsm_active_services() {
 }
 
 _rsm() {
-	local -a args subcommands cmd
-	if (( CURRENT > 2))
+	local -a args subcommands cmd havesubcmd tmpwords lastcmd SVDIR RUNSVDIR
+	SVDIR='/etc/runit/sv'
+	RUNSVDIR='/etc/runit/runsvdir/default'
+	havesubcmd=NONE
+	tmpwords=("${words[@]}")
+
+	while true
+	do
+		cmd=${tmpwords[2]}
+		case $cmd in
+			-c)
+				havesubcmd=OPTARG
+				shift tmpwords
+				;;
+			-d)
+				havesubcmd=OPTARG
+				lastcmd=-d
+				shift tmpwords
+				;;
+			-*)
+				havesubcmd=OPT
+				shift tmpwords
+				;;
+			"")
+				break
+				;;
+			*)
+				if [ "$havesubcmd" = OPTARG ]
+				then
+					if [ "$lastcmd" = "-d" ]
+					then
+						SVDIR="$cmd"
+					fi
+					havesubcmd=OPT
+					shift tmpwords
+				else
+					havesubcmd=SUBCMD
+					break
+				fi
+				;;
+		esac
+	done
+
+	if [ "$havesubcmd" = SUBCMD ]
 	then
+		# havesubcmd=NONE
+		# while true
+		# do
+		# 	cmd=${words[2]}
+		# 	case $cmd in
+		# 		-c|-d)
+		# 			havesubcmd=OPTARG
+		# 			shift words
+		# 			;;
+		# 		-*)
+		# 			havesubcmd=OPT
+		# 			shift words
+		# 			;;
+		# 		"")
+		# 			break
+		# 			;;
+		# 		*)
+		# 			if [ "$havesubcmd" = OPTARG ]
+		# 			then
+		# 				havesubcmd=OPT
+		# 				shift words
+		# 			else
+		# 				break
+		# 			fi
+		# 			;;
+		# 	esac
+		# done
+
+		words=("${tmpwords[@]}")
+
 		cmd=${words[2]}
 		(( CURRENT-- ))
 		shift words
@@ -51,16 +120,23 @@ _rsm() {
 			'alllogs:The same like logs <service>'
 			"errorlogs:Outputs the service's logfilenames and their errorlogs from /var/log/<service>/"
 		)
-		_describe -t commands 'rsm' subcommands
-		args=(
-			"-h[Print this message and exit]"
-			"-l[Show log processes, this is a shortcut for 'status -l']"
-			"-t[Tree view, this is a shortcut for 'status -t']"
-			"-u[User mode, this is a shortcut for '-d ~/runit/service']"
-			"-v[Increase verbosity]"
-			"-V[Print the version number and exit]"
-		)
-		_arguments $args[@]
+		if [ "$havesubcmd" = NONE ] || [ "$havesubcmd" = OPT ]
+		then
+			_describe -t commands 'rsm' subcommands
+		fi
+		_arguments : \
+			'-c[Enable/disable color output, defaults to auto]:Enable color:(yes no auto)' \
+			'-d[Directory to look into, defaults to env SVDIR or /run/runit/service is unset]:directory:_files -/' \
+			'-h[Print this message and exit]' \
+			"-l[Show log processes, this is a shortcut for 'status -l']" \
+			"-t[Tree view, this is a shortcut for 'status -t']" \
+			"-u[User mode, this is a shortcut for '-d ~/runit/service']" \
+			'-v[Increase verbosity]' \
+			'-V[Print the version number and exit]'
+		if [ "$havesubcmd" = OPTARG ]
+		then
+			_describe -t commands 'rsm' subcommands
+		fi
 	fi
 	return 0
 }
