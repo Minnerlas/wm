@@ -1,0 +1,68 @@
+#compdef rsm
+
+# Copy to $HOME/.local/share/zsh/functions/Completion
+
+SVDIR='/etc/runit/sv'
+RUNSVDIR='/etc/runit/runsvdir/default'
+
+_rsm_all_services() {
+	local IFS=$'\n'
+	# Extract names and email addresses from gpg --list-keys
+	_values 'active services' $(ls -1 "$SVDIR")
+}
+
+_rsm_active_services() {
+	local IFS=$'\n'
+	# Extract names and email addresses from gpg --list-keys
+	_values 'active services' $(ls -1 "$RUNSVDIR")
+}
+
+_rsm() {
+	local -a args subcommands cmd
+	if (( CURRENT > 2))
+	then
+		cmd=${words[2]}
+		(( CURRENT-- ))
+		shift words
+		case "$cmd" in
+			status)
+				_arguments : \
+					'-t[Enables tree mode (process tree)]' \
+					'-l[Enables log mode (show log processes)]'
+				_rsm_active_services
+				;;
+			enable|logs|alllogs|errorlogs)
+				_rsm_all_services
+				;;
+			disable|start|stop|restart|reload)
+				_rsm_active_services
+				;;
+		esac
+	else
+		subcommands=(
+			'status:Default subcommand, show process status'
+			'enable:Enable the service(s) (remove the "down" file, does not start service'
+			'disable:Disable the service(s) (create the "down" file, does not stop service'
+			'start:Start the service'
+			'stop:Stop the service'
+			'restart:Restart the service'
+			'reload:Reload the service (send SIGHUP)'
+			"logs:Outputs the service's logfilenames and their access & error logs from /var/log/<serice>/"
+			'alllogs:The same like logs <service>'
+			"errorlogs:Outputs the service's logfilenames and their errorlogs from /var/log/<service>/"
+		)
+		_describe -t commands 'rsm' subcommands
+		args=(
+			"-h[Print this message and exit]"
+			"-l[Show log processes, this is a shortcut for 'status -l']"
+			"-t[Tree view, this is a shortcut for 'status -t']"
+			"-u[User mode, this is a shortcut for '-d ~/runit/service']"
+			"-v[Increase verbosity]"
+			"-V[Print the version number and exit]"
+		)
+		_arguments $args[@]
+	fi
+	return 0
+}
+
+_rsm
