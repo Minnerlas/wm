@@ -60,34 +60,6 @@ _rsm() {
 
 	if [ "$havesubcmd" = SUBCMD ]
 	then
-		# havesubcmd=NONE
-		# while true
-		# do
-		# 	cmd=${words[2]}
-		# 	case $cmd in
-		# 		-c|-d)
-		# 			havesubcmd=OPTARG
-		# 			shift words
-		# 			;;
-		# 		-*)
-		# 			havesubcmd=OPT
-		# 			shift words
-		# 			;;
-		# 		"")
-		# 			break
-		# 			;;
-		# 		*)
-		# 			if [ "$havesubcmd" = OPTARG ]
-		# 			then
-		# 				havesubcmd=OPT
-		# 				shift words
-		# 			else
-		# 				break
-		# 			fi
-		# 			;;
-		# 	esac
-		# done
-
 		words=("${tmpwords[@]}")
 
 		cmd=${words[2]}
