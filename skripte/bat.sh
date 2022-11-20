@@ -30,11 +30,11 @@ then
 elif [ "$PERC" -lt 80 ] && [ -f "$TMPDIR/batteryhigh" ]
 then
 	rm "$TMPDIR/batteryhigh"
-elif [ "$PERC" -eq 100 ] && [ ! -f "$TMPDIR/battery100" ]
+elif [ "$PERC" -ge 99  ] && [ ! -f "$TMPDIR/battery100" ]
 then
-	notify-send "Батерија је на $PERC%."
+	notify-send "Батерија је на 100%."
 	touch "$TMPDIR/battery100"
-elif [ "$PERC" -lt 100 ] && [ -f "$TMPDIR/battery100" ]
+elif [ "$PERC" -lt 99 ] && [ -f "$TMPDIR/battery100" ]
 then
 	rm "$TMPDIR/battery100"
 fi
