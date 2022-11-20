@@ -95,7 +95,7 @@ _rsm() {
 		words=("${tmpwords[@]}")
 
 		cmd="${words[2]}"
-		CURRENT=$((CURRENT - 1))
+		CURRENT=$((CURRENT - 1)) # TODO: Is this necessary?
 		shift words
 		case "$cmd" in
 			status)
