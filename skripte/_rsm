@@ -62,7 +62,6 @@ _rsm() {
 				shift tmpwords
 				;;
 			-d)
-				lastcmd="-d"
 				havesubcmd=OPTARG
 				shift tmpwords
 				;;
@@ -88,6 +87,7 @@ _rsm() {
 				fi
 				;;
 		esac
+		lastcmd="$cmd"
 	done
 
 	if [ "$havesubcmd" = SUBCMD ]
