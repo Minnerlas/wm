@@ -39,7 +39,7 @@ _rsm_subcommands() {
 		'alllogs:The same like logs <service>'
 		"errorlogs:Outputs the service's logfilenames and their errorlogs from /var/log/<service>/"
 	)
-	_describe -t commands 'Subcommands' subcommands
+	_describe -t commands 'rsm' subcommands
 }
 
 _rsm() {
